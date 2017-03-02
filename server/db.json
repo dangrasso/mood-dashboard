@@ -1,0 +1,48 @@
+{
+  "users": [
+    { "id": "daniele", "team": "privacy" },
+    { "id": "john", "team": "privacy" },
+    { "id": "sara", "team": "privacy" },
+    { "id": "alex", "team": "privacy" },
+    { "id": "bill", "team": "privacy" },
+    { "id": "outsider", "team": "otherTeam" }
+  ],
+
+  "logs": [
+    {
+      "id": 1,
+      "day": "2017-03-01",
+      "userId": "daniele",
+      "moodLabel": ":)",
+      "moodValue": 1
+    },
+    {
+      "id": 2,
+      "day": "2017-03-01",
+      "userId": "sara",
+      "moodLabel": ":|",
+      "moodValue": 0
+    },
+    {
+      "id": 3,
+      "day": "2017-03-02",
+      "userId": "daniele",
+      "moodLabel": ":D",
+      "moodValue": 2
+    },
+    {
+      "id": 4,
+      "day": "2017-03-02",
+      "userId": "alex",
+      "moodLabel": ":(",
+      "moodValue": -1
+    },
+    {
+      "id": 5,
+      "day": "2017-03-01",
+      "userId": "bill",
+      "moodLabel": ";(",
+      "moodValue": -2
+    }
+  ]
+}
