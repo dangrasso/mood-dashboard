@@ -1,48 +1,750 @@
 {
   "users": [
-    { "id": "daniele", "team": "privacy" },
-    { "id": "john", "team": "privacy" },
-    { "id": "sara", "team": "privacy" },
-    { "id": "alex", "team": "privacy" },
-    { "id": "bill", "team": "privacy" },
-    { "id": "outsider", "team": "otherTeam" }
+    {
+      "id": "alex",
+      "team": "teamOne"
+    },
+    {
+      "id": "bob",
+      "team": "teamOne"
+    },
+    {
+      "id": "carl",
+      "team": "teamOne"
+    },
+    {
+      "id": "david",
+      "team": "teamOne"
+    },
+    {
+      "id": "emma",
+      "team": "teamTwo"
+    },
+    {
+      "id": "fred",
+      "team": "teamTwo"
+    }
   ],
-
   "logs": [
     {
-      "id": 1,
-      "day": "2017-03-01",
-      "userId": "daniele",
-      "moodLabel": ":)",
-      "moodValue": 1
-    },
-    {
-      "id": 2,
-      "day": "2017-03-01",
-      "userId": "sara",
-      "moodLabel": ":|",
-      "moodValue": 0
-    },
-    {
-      "id": 3,
-      "day": "2017-03-02",
-      "userId": "daniele",
-      "moodLabel": ":D",
-      "moodValue": 2
-    },
-    {
-      "id": 4,
-      "day": "2017-03-02",
+      "day": "2017-02-27T23:00:00.000Z",
       "userId": "alex",
-      "moodLabel": ":(",
-      "moodValue": -1
+      "mood": ":neutral_face:",
+      "id": 1
     },
     {
-      "id": 5,
-      "day": "2017-03-01",
-      "userId": "bill",
-      "moodLabel": ";(",
-      "moodValue": -2
+      "day": "2017-02-28T23:00:00.000Z",
+      "userId": "bob",
+      "mood": ":blowfish:",
+      "id": 2
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "bob",
+      "mood": ":gorilla:",
+      "id": 3
+    },
+    {
+      "day": "2017-02-22T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":unicorn:",
+      "id": 4
+    },
+    {
+      "day": "2017-02-23T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":gorilla:",
+      "id": 5
+    },
+    {
+      "day": "2017-03-01T23:00:00.000Z",
+      "userId": "bob",
+      "mood": ":smiley:",
+      "id": 6
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "bob",
+      "mood": ":monkey:",
+      "id": 7
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "bob",
+      "mood": ":)",
+      "id": 8
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "bob",
+      "mood": ":)",
+      "id": 9
+    },
+    {
+      "day": "2017-03-02T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":smiley:",
+      "id": 10
+    },
+    {
+      "day": "2017-03-02T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":smile:",
+      "id": 11
+    },
+    {
+      "day": "2017-03-02T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":smile:",
+      "id": 12
+    },
+    {
+      "day": "2017-02-28T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":thermometer_face:",
+      "id": 13
+    },
+    {
+      "day": "2017-02-28T23:00:00.000Z",
+      "userId": "carl",
+      "mood": "",
+      "id": 14
+    },
+    {
+      "day": "2017-03-01T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":sunglasses:",
+      "id": 15
+    },
+    {
+      "day": "2017-03-01T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":laughing:",
+      "id": 16
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":sunglasses:",
+      "id": 17
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":c",
+      "id": 18
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":co",
+      "id": 19
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":cow",
+      "id": 20
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":cow:",
+      "id": 21
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":gorilla:",
+      "id": 22
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "carl",
+      "mood": "kk",
+      "id": 23
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "carl",
+      "mood": "kkj",
+      "id": 24
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "carl",
+      "mood": "kkjn",
+      "id": 25
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "carl",
+      "mood": "kkjnk",
+      "id": 26
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "carl",
+      "mood": "kkjnkj",
+      "id": 27
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "carl",
+      "mood": "kkjnkjn",
+      "id": 28
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "carl",
+      "mood": "kkjnkjnj",
+      "id": 29
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "carl",
+      "mood": "kkjnkjnjj",
+      "id": 30
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":poop:",
+      "id": 31
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lk",
+      "id": 32
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkm",
+      "id": 33
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkml",
+      "id": 34
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkmlk",
+      "id": 35
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkmlkm",
+      "id": 36
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkmlkml",
+      "id": 37
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkmlkmlkm",
+      "id": 38
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkmlkmlkmk",
+      "id": 39
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkmlkmlkmkm",
+      "id": 40
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkmlkmlkmkmk",
+      "id": 41
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkmlkmlkmkm",
+      "id": 42
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkmlkmlkmk",
+      "id": 43
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkmlkmlkm",
+      "id": 44
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkmlkmlk",
+      "id": 45
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkmlkml",
+      "id": 46
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkmlkm",
+      "id": 47
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkml",
+      "id": 48
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lkm",
+      "id": 49
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-lk",
+      "id": 50
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-l",
+      "id": 51
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "-",
+      "id": 52
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "david",
+      "mood": "",
+      "id": 53
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "bob",
+      "mood": ":unamused:",
+      "id": 54
+    },
+    {
+      "day": "2017-03-02T23:00:00.000Z",
+      "userId": "bob",
+      "mood": ":scream:",
+      "id": 55
+    },
+    {
+      "day": "2017-03-02T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":dizzy_face:",
+      "id": 56
+    },
+    {
+      "day": "2017-03-02T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":unamused:",
+      "id": 57
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":thermometer_face:",
+      "id": 58
+    },
+    {
+      "day": "2017-02-28T23:00:00.000Z",
+      "userId": "alex",
+      "mood": ":scream:",
+      "id": 59
+    },
+    {
+      "day": "2017-03-02T23:00:00.000Z",
+      "userId": "alex",
+      "mood": ":unamused:",
+      "id": 60
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "alex",
+      "mood": ":laughing:",
+      "id": 61
+    },
+    {
+      "day": "2017-03-01T23:00:00.000Z",
+      "userId": "alex",
+      "mood": ":neutral_face:",
+      "id": 62
+    },
+    {
+      "day": "2017-03-01T23:00:00.000Z",
+      "userId": "alex",
+      "mood": ":frawning:",
+      "id": 63
+    },
+    {
+      "day": "2017-02-21T23:00:00.000Z",
+      "userId": "bob",
+      "mood": ":sleeping:",
+      "id": 64
+    },
+    {
+      "day": "2017-02-22T23:00:00.000Z",
+      "userId": "bob",
+      "mood": ":scream:",
+      "id": 65
+    },
+    {
+      "day": "2017-02-21T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":gorilla:",
+      "id": 66
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "emma",
+      "mood": ":relieved:",
+      "id": 67
+    },
+    {
+      "day": "2017-02-28T23:00:00.000Z",
+      "userId": "emma",
+      "mood": ":slight_smile:",
+      "id": 68
+    },
+    {
+      "day": "2017-03-01T23:00:00.000Z",
+      "userId": "emma",
+      "mood": ":neutral_face:",
+      "id": 69
+    },
+    {
+      "day": "2017-03-02T23:00:00.000Z",
+      "userId": "emma",
+      "mood": ":bear:",
+      "id": 70
+    },
+    {
+      "day": "2017-03-01T23:00:00.000Z",
+      "userId": "fred",
+      "mood": ":laughing:",
+      "id": 71
+    },
+    {
+      "day": "2017-02-28T23:00:00.000Z",
+      "userId": "fred",
+      "mood": ":unamused:",
+      "id": 72
+    },
+    {
+      "day": "2017-02-27T23:00:00.000Z",
+      "userId": "fred",
+      "mood": ":slight_smile:",
+      "id": 73
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "emma",
+      "mood": ":smiley:",
+      "id": 74
+    },
+    {
+      "day": "2017-02-26T23:00:00.000Z",
+      "userId": "fred",
+      "mood": ":smiley:",
+      "id": 75
+    },
+    {
+      "day": "2017-03-02T23:00:00.000Z",
+      "userId": "fred",
+      "mood": ":poop:",
+      "id": 76
+    },
+    {
+      "day": "2017-03-07T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":neutral_face:",
+      "id": 77
+    },
+    {
+      "day": "2017-03-06T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":unamused:",
+      "id": 78
+    },
+    {
+      "day": "2017-02-23T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":laughing:",
+      "id": 79
+    },
+    {
+      "day": "2017-02-19T23:00:00.000Z",
+      "userId": "alex",
+      "mood": ":bear:",
+      "id": 80
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "alex",
+      "mood": ":bear:",
+      "id": 81
+    },
+    {
+      "day": "2017-02-21T23:00:00.000Z",
+      "userId": "alex",
+      "mood": ":bear:",
+      "id": 82
+    },
+    {
+      "day": "2017-02-22T23:00:00.000Z",
+      "userId": "alex",
+      "mood": ":bear:",
+      "id": 83
+    },
+    {
+      "day": "2017-02-23T23:00:00.000Z",
+      "userId": "alex",
+      "mood": ":bear:",
+      "id": 84
+    },
+    {
+      "day": "2017-02-19T23:00:00.000Z",
+      "userId": "bob",
+      "mood": ":ant:",
+      "id": 85
+    },
+    {
+      "day": "2017-02-23T23:00:00.000Z",
+      "userId": "bob",
+      "mood": ":blowfish:",
+      "id": 86
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":monkey:",
+      "id": 87
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":rolling_eyes:",
+      "id": 88
+    },
+    {
+      "day": "2017-02-21T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":unamused:",
+      "id": 89
+    },
+    {
+      "day": "2017-02-21T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":unamused:",
+      "id": 90
+    },
+    {
+      "day": "2017-02-21T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":unamused:",
+      "id": 91
+    },
+    {
+      "day": "2017-02-21T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":unamused:",
+      "id": 92
+    },
+    {
+      "day": "2017-02-21T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":unamused:",
+      "id": 93
+    },
+    {
+      "day": "2017-02-21T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":unamused:",
+      "id": 94
+    },
+    {
+      "day": "2017-02-21T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":unamused:",
+      "id": 95
+    },
+    {
+      "day": "2017-02-21T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":frowning2:",
+      "id": 96
+    },
+    {
+      "day": "2017-02-21T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":frowning2:",
+      "id": 97
+    },
+    {
+      "day": "2017-02-21T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":frowning2:",
+      "id": 98
+    },
+    {
+      "day": "2017-02-22T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":smirk:",
+      "id": 99
+    },
+    {
+      "day": "2017-02-22T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":smirk:",
+      "id": 100
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": "",
+      "id": 101
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":frowning2:",
+      "id": 102
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":frowning2:",
+      "id": 103
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":dizzy_face:",
+      "id": 104
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":dizzy_face:",
+      "id": 105
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":dizzy_face:",
+      "id": 106
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":dizzy_face:",
+      "id": 107
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":dizzy_face:",
+      "id": 108
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":dizzy_face:",
+      "id": 109
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":dizzy_face:",
+      "id": 110
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":dizzy_face:",
+      "id": 111
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":dizzy_face:",
+      "id": 112
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":dizzy_face:",
+      "id": 113
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":dizzy_face:",
+      "id": 114
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":dizzy_face:",
+      "id": 115
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":smiley:",
+      "id": 116
+    },
+    {
+      "day": "2017-02-20T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":smiley:",
+      "id": 117
+    },
+    {
+      "day": "2017-03-07T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":slight_smile:",
+      "id": 118
+    },
+    {
+      "day": "2017-03-08T23:00:00.000Z",
+      "userId": "david",
+      "mood": ":sunglasses:",
+      "id": 119
+    },
+    {
+      "day": "2017-03-08T23:00:00.000Z",
+      "userId": "carl",
+      "mood": ":rolling_eyes:",
+      "id": 120
     }
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "users": [
+    { "id": "sara", "team": "myTeam" },
+    { "id": "alex", "team": "myTeam" },
+    { "id": "bill", "team": "myTeam" }
+  ],
+
+  "logs": []
+}

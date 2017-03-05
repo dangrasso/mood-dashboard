@@ -1,42 +1,58 @@
 const qwest = require('qwest');
+const moment = require('moment');
 
-const BASE_URL = 'http://localhost:3000';
+qwest.base = 'http://localhost:3000';
+
+const today = moment().set({'millisecond': 0, 'second': 0, 'minute': 0, 'hour': 0});
 
 module.exports = {
   state: {
     /* initial values of state inside the model */
-    team: 'privacy',
+    team: 'teamOne',
     logs: [],
     users: [],
     days: [
-      '2017-02-27',
-      '2017-02-28',
-      '2017-03-01',
-      '2017-03-02',
-      '2017-03-03',
+      today.clone().isoWeekday(1).toISOString(), // monday...
+      today.clone().isoWeekday(2).toISOString(),
+      today.clone().isoWeekday(3).toISOString(),
+      today.clone().isoWeekday(4).toISOString(),
+      today.clone().isoWeekday(5).toISOString(), // ...to friday
     ],
+    selectedUser: null,
+    selectedDay: null,
   },
   reducers: {
     /* synchronous operations that modify state. Triggered by actions. Signature of (data, state). */
-    sync: function (state, data) {
-      console.log(data);
+    sync: (state, data) => Object.assign(state, data),
+    select: (state, log) => Object.assign(state, { selectedLog: log }),
 
-      return Object.assign(state, data);
-    }
+    nextWeek: (state) => Object.assign(state, {
+      days: state.days.map(day => moment(day).add(1, 'week').toISOString())
+    }),
+    previousWeek: (state) => Object.assign(state, {
+      days: state.days.map(day => moment(day).subtract(1, 'week').toISOString())
+    }),
   },
   effects: {
     // asynchronous operations that don't modify state directly.
     // Triggered by actions, can call actions. Signature of (data, state, send, done)
     getLogs: function (state, data, send, done) {
-      qwest.get(BASE_URL + '/logs')
-        .then((xhr, data) => send('sync', {logs: data}, done))
+      qwest.get('/logs')
+        .then((xhr, resp) => send('sync', {logs: resp}, done))
         .catch(console.error);
     },
     getUsers: function (state, data, send, done) {
-      qwest.get(BASE_URL + '/users?team=' + state.team)
-        .then((xhr, data) => send('sync', {users: data}, done))
+      qwest.get('/users?team=' + state.team)
+        .then((xhr, resp) => send('sync', {users: resp}, done))
         .catch(console.error);
     },
+    saveLog: function(state, data, send, done) {
+      const log = data;
+
+      (log.hasOwnProperty('id') ? qwest.put(`/logs/${log.id}`, log) : qwest.post(`/logs`, log))
+          .then((xhr, data) => send('getLogs', null, done))
+          .catch(console.error);
+    }
   },
   subscriptions: {
     // asynchronous read-only operations that don't modify state directly.
@@ -51,4 +67,4 @@ module.exports = {
     }
     */
   }
-}
+};
