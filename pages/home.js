@@ -4,6 +4,7 @@ const _ = require('lodash');
 const moment = require('moment');
 const emojione = require('emojione');
 
+
 const EMOJI_SET_MOODS = [
   ':scream:',
   ':dizzy_face:',
@@ -18,25 +19,6 @@ const EMOJI_SET_MOODS = [
   ':sunglasses:',
 ];
 
-const EMOJI_SET_SPECIAL = [
-  ':thermometer_face:',
-  ':poop:',
-];
-
-const EMOJI_SET_ANIMALS = [
-  ':blowfish:',
-  ':octopus:',
-  ':ant:',
-  ':monkey:',
-  ':gorilla:',
-  ':bear:',
-  ':turtle:',
-  ':snail:',
-  ':racehorse:',
-  ':unicorn:',
-
-];
-
 const prefix = css`
   :host {
     display: flex;
@@ -45,6 +27,7 @@ const prefix = css`
     align-items: center;
   
     table {
+      min-width: 600px;
       background-color: white;
       padding: 1rem;
       border-collapse: collapse;
@@ -70,7 +53,7 @@ const prefix = css`
     }
     
     .user { 
-      background-color: #ECF0F1; 
+      border-right: 1px solid #ECF0F1; 
     }
     
     .day {
@@ -117,19 +100,11 @@ module.exports = function (state, prev, send) {
         <tr>
           <th>
            <div class="week">
-              ${ (() => {
-                const emojiBtn = html`<span onclick=${() => send('previousWeek')}></span>`;
-                emojiBtn.innerHTML = emojione.toImage(':arrow_backward:');
-                return emojiBtn;
-              })()}
-              
+              <span onclick=${() => send('changeDaysRange', { amount: -1, unit: 'week'})}>${makeEmoji(':rewind:')}</span>
+              <span onclick=${() => send('changeDaysRange', { amount: -1, unit: 'day'})}>${makeEmoji(':arrow_backward:')}</span>
               <span>week ${moment(state.days[0]).week()}</span>
-              
-              ${ (() => {
-                const emojiBtn2 = html`<span onclick=${() => send('nextWeek')}></span>`;
-                emojiBtn2.innerHTML = emojione.toImage(':arrow_forward:');
-                return emojiBtn2;
-              })()}
+              <span onclick=${() => send('changeDaysRange', { amount: +1, unit: 'day'})}>${makeEmoji(':arrow_forward:')}</span>
+              <span onclick=${() => send('changeDaysRange', { amount: +1, unit: 'week'})}>${makeEmoji(':fast_forward:')}</span>
             </div>
           </th>
           ${_.map(state.days, day => {
@@ -153,43 +128,36 @@ module.exports = function (state, prev, send) {
                   mood: ''
                 };
               
-              let cell;
-              
-              if (!isSelectedAny()) {
-                cell = html`<td class="mood" onclick=${() => send('select', log)}></td>`;
-              } else if (isSelected(user, day)) {
-                cell = html`<td class="mood m--selected" onclick=${() => send('select', undefined)}></td>`;
-              } else {
-                cell = html`<td class="mood m--unselected" onclick=${() => send('select', log)}></td>`;
-              }
-              
-              cell.innerHTML = emojione.toImage(log.mood);
-    
-              return cell;
+              return html`<td 
+                  class="mood ${isSelected(user, day) ? 'm--selected' : isSelectedAny() ? 'm--unselected' : '' }"
+                  onclick=${() => send('select', isSelected(user, day) ? null : log)}>
+                    ${makeEmoji(log.mood)}
+                </td>`;
             })}
           </tr>
         `)}
       </table>
 
-      <div  class="input-area ${isSelectedAny() ? '' : 'm--disabled'}" enabled="false">
+      <div  class="input-area ${isSelectedAny() ? '' : 'm--disabled'}">
         <div class="emoji-bar">
-          Moods: ${_.map(EMOJI_SET_MOODS, makeEmojiButton)}
+          ${_.map(EMOJI_SET_MOODS, makeEmojiButton)}
+          <span>
+            ${isSelectedAny() && state.selectedLog.id ? html`
+              <button type="button" onclick=${() => deleteSelected()}>Delete</button>
+            ` : ''}
+          </span>
         </div>
-        <div class="emoji-bar">
-          Animals: ${_.map(EMOJI_SET_ANIMALS, makeEmojiButton)}
-        </div>
-        <div class="emoji-bar">
-          Special: ${_.map(EMOJI_SET_SPECIAL, makeEmojiButton)}
-        </div>
-        <div class="emoji-bar">
-          <button type="button" onclick=${() => save('')}>reset</button>
-        </div>
-        <div class="emoji-bar">
-          Custom: <input type="text" value=${isSelectedAny() ? state.selectedLog.mood : ''} oninput=${(e) => save(e.target.value)}>
+        
+        <div>
+          <label for="custom">Custom:</label>
+          <input type="text" 
+            value=${isSelectedAny() ? state.selectedLog.mood : ''} 
+            oninput=${_.debounce((e) => saveSelected(e.target.value), 1000)} />
+          <span>(more <a href="http://emoji.codes/">emoji</a>)</span>   
         </div>
       </div>
-      }
 
+      <footer>Emoji art supplied by <a href="http://emojione.com/">EmojiOne</a></footer>
     </main>
   `;
 
@@ -205,19 +173,34 @@ module.exports = function (state, prev, send) {
     return !!state.selectedLog;
   }
 
-  function makeEmojiButton(emoji) {
-    let emojiBtn = html`<span class="emoji-button" onclick=${() => save(emoji)}></span>`;
-    emojiBtn.innerHTML = emojione.toImage(emoji);
-    return emojiBtn;
+  function makeEmojiButton(emojiShortName) {
+    return html`
+      <span class="emoji-button" onclick=${() => saveSelected(emojiShortName)}>
+        ${makeEmoji(emojiShortName)}
+      </span>`;
   }
 
-  function save(mood) {
+  function makeEmoji(emojiShortName) {
+    let emoji = html`<span></span>`;
+    emoji.innerHTML = emojione.toImage(emojiShortName);
+    return emoji;
+  }
+
+  function saveSelected(mood) {
     if (!isSelectedAny()) {
       return;
     }
     const log = state.selectedLog;
     log.mood = mood;
     send('saveLog', log);
+  }
+
+  function deleteSelected() {
+    if (!isSelectedAny()) {
+      return;
+    }
+    const log = state.selectedLog;
+    send('deleteLog', log);
   }
 
   function init() {

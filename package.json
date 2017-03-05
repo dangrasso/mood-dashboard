@@ -12,14 +12,16 @@
     "test": "npm run lint"
   },
   "keywords": [],
-  "author": "",
+  "author": "Daniele Grasso",
   "license": "MIT",
   "dependencies": {
     "choo": "^4.1.0",
+    "choo-log": "^3.0.1",
     "emojione": "^2.2.7",
     "json-server": "^0.9.5",
     "lodash": "^4.17.4",
     "moment": "^2.17.1",
+    "query-string": "^4.3.2",
     "qwest": "^4.4.5",
     "sheetify": "^6.0.1",
     "sheetify-nested": "^1.0.2"

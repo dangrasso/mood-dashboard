@@ -1,5 +1,12 @@
 const choo = require('choo');
+const log = require('choo-log');
+const queryString = require('query-string').parse(location.search);
+
 const app = choo();
+
+if (queryString.hasOwnProperty('debug')) {
+  app.use(log());
+}
 
 app.model(require('./models/app'));
 

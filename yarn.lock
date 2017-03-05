@@ -623,6 +623,14 @@ chokidar@^1.0.0:
   optionalDependencies:
     fsevents "^1.0.0"
 
+choo-log:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/choo-log/-/choo-log-3.0.1.tgz#0628bc3e17f35f3986ba25f3cfd1ad0a5328ddd8"
+  dependencies:
+    detect-browser "^1.5.0"
+    pad-left "^2.1.0"
+    pad-right "^0.2.2"
+
 choo@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/choo/-/choo-4.1.0.tgz#b87ac580f410e9c45577b640788625970ff25dd1"
@@ -1016,6 +1024,10 @@ des.js@^1.0.0:
 destroy@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
+
+detect-browser@^1.5.0:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/detect-browser/-/detect-browser-1.6.2.tgz#7b6b7d0125c399a3998613767a30d58b2764e858"
 
 detective@^4.0.0:
   version "4.5.0"
@@ -2738,7 +2750,7 @@ package-json@^2.0.0:
     registry-url "^3.0.3"
     semver "^5.1.0"
 
-pad-left@^2.0.0:
+pad-left@^2.0.0, pad-left@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/pad-left/-/pad-left-2.1.0.tgz#16e6a3b2d44a8e138cb0838cc7cb403a4fc9e994"
   dependencies:
@@ -2990,6 +3002,13 @@ punycode@1.3.2:
 qs@~6.3.0, qs@6.3.1:
   version "6.3.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.1.tgz#918c0b3bcd36679772baf135b1acb4c1651ed79d"
+
+query-string:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-4.3.2.tgz#ec0fd765f58a50031a3968c2431386f8947a5cdd"
+  dependencies:
+    object-assign "^4.1.0"
+    strict-uri-encode "^1.0.0"
 
 querystring-es3@~0.2.0:
   version "0.2.1"
@@ -3636,6 +3655,10 @@ stream-splicer@^2.0.0:
   dependencies:
     inherits "^2.0.1"
     readable-stream "^2.0.2"
+
+strict-uri-encode@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
 
 string_decoder@~0.10.0, string_decoder@~0.10.x:
   version "0.10.31"
