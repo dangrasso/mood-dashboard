@@ -1,4 +1,16 @@
 {
-  "users": [],
-  "logs": []
+  "users": [
+    {
+      "id": "user1",
+      "team": "aTeam"
+    }
+  ],
+  "logs": [
+    {
+      "day": "2017-05-12T00:00:00.000Z",
+      "userId": "user1",
+      "mood": ":smiley:",
+      "id": 1
+    }
+  ]
 }

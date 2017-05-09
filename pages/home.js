@@ -20,11 +20,14 @@ const EMOJI_SET_MOODS = [
 ];
 
 const prefix = css`
+  html, body { height:100%; }
+  
   :host {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    min-height: 100%;
   
     table {
       min-width: 600px;
@@ -32,6 +35,7 @@ const prefix = css`
       padding: 1rem;
       border-collapse: collapse;
       box-sizing: border-box;
+      border: 1px solid #ECF0F1;
     }
     
     tr { border-top: 1px solid #ECF0F1; }
@@ -68,6 +72,11 @@ const prefix = css`
     }
     
     .input-area {
+      display: block;
+      text-align: center;
+      padding: 2rem;
+      width: 100%;
+      
       &.m--disabled { 
         opacity: .5 ;
         .emoji-button .emojione:hover { height: 2.5rem; }
@@ -81,11 +90,16 @@ const prefix = css`
       height: 5rem;
     }
     
-    .emoji-button .emojione{
-      height: 2.5rem;
-      &:hover { height: 3rem; }
+    .emoji-button {      
+      .emojione {
+        height: 2.5rem;
+        &:hover { height: 3rem; }
+      }
     }
-  
+    
+    footer {
+      margin-top: auto;
+    }
   }
 `;
 
@@ -95,7 +109,26 @@ module.exports = function (state, prev, send) {
       
       <h1>Mood Board</h1>
       <h2>Team: ${state.team}</h2>
-
+      <div  class="input-area ${isSelectedAny() ? '' : 'm--disabled'}">
+        <div class="emoji-bar">
+          ${_.map(EMOJI_SET_MOODS, makeEmojiButton)}
+          <span>
+            ${isSelectedAny() && state.selectedLog.id ? html`
+              <span aria-label="delete" class="emoji-button" onclick=${() => deleteSelected()}>
+                ${makeEmoji(':negative_squared_cross_mark:')}
+              </span>
+            ` : ''}
+          </span>
+        </div>
+        <div class="input-bar">
+          <label for="custom-mood">Custom:</label>
+          <input id="custom-mood" type="text" 
+            value=${isSelectedAny() ? state.selectedLog.mood : ''} 
+            oninput=${_.debounce((e) => saveSelected(e.target.value), 1000)} />
+          <span>(more <a href="http://emoji.codes/" target="_blank" rel="noopener">emoji</a>)</span>   
+        </div>
+      </div>
+      
       <table>
         <tr>
           <th>
@@ -138,24 +171,7 @@ module.exports = function (state, prev, send) {
         `)}
       </table>
 
-      <div  class="input-area ${isSelectedAny() ? '' : 'm--disabled'}">
-        <div class="emoji-bar">
-          ${_.map(EMOJI_SET_MOODS, makeEmojiButton)}
-          <span>
-            ${isSelectedAny() && state.selectedLog.id ? html`
-              <button type="button" onclick=${() => deleteSelected()}>Delete</button>
-            ` : ''}
-          </span>
-        </div>
-        
-        <div>
-          <label for="custom">Custom:</label>
-          <input type="text" 
-            value=${isSelectedAny() ? state.selectedLog.mood : ''} 
-            oninput=${_.debounce((e) => saveSelected(e.target.value), 1000)} />
-          <span>(more <a href="http://emoji.codes/">emoji</a>)</span>   
-        </div>
-      </div>
+      
 
       <footer>Emoji art supplied by <a href="http://emojione.com/">EmojiOne</a></footer>
     </main>

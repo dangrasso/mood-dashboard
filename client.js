@@ -4,7 +4,7 @@ const queryString = require('query-string').parse(location.search);
 
 const app = choo();
 
-if (queryString.hasOwnProperty('debug')) {
+if ('debug' in queryString) {
   app.use(log());
 }
 
