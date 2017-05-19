@@ -16,7 +16,7 @@ const EMOJI_SET_MOODS = [
   ':slight_smile:',
   ':smiley:',
   ':laughing:',
-  ':sunglasses:',
+  ':sunglasses:'
 ];
 
 const prefix = css`
