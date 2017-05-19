@@ -56,20 +56,20 @@ module.exports = {
         .catch(console.error);
     },
     getUsers: function (state, data, send, done) {
-      qwest.get(`/users?${state.team ? `team=${state.team}&` : ''}`)
+      qwest.get(`/users/${state.team ? `team/${state.team}` : ''}`)
         .then((xhr, resp) => send('sync', {users: resp}, done))
         .catch(console.error);
     },
     saveLog: function(state, data, send, done) {
       const log = data;
-      (log.hasOwnProperty('id') ? qwest.put(`/logs/${log.id}`, log) : qwest.post(`/logs`, log))
+      (log.hasOwnProperty('_id') ? qwest.put(`/logs/${log._id}`, log) : qwest.post(`/logs`, log))
           .then((xhr, savedLog) => send('select', savedLog, done))
           .then(() => send('getLogs', null, done))
           .catch(console.error);
     },
     deleteLog: function(state, data, send, done) {
       const log = data;
-      qwest['delete'](`/logs/${log.id}`)
+      qwest['delete'](`/logs/${log._id}`)
         .then(() => send('select', null, done))
         .then(() => send('getLogs', null, done))
         .catch(console.error);
