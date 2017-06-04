@@ -10,7 +10,7 @@ if ('debug' in queryString) {
 
 app.model(require('./models/app'));
 
-app.router(['/', require('./pages/home')]);
+app.router(['/', require('./pages/board')]);
 
 const tree = app.start();
 

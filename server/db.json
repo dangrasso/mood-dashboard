@@ -5,12 +5,20 @@
       "team": "aTeam"
     }
   ],
-  "logs": [
+  "moods": [
     {
-      "day": "2017-05-12T00:00:00.000Z",
+      "day": "2017-06-06T00:00:00.000Z",
       "userId": "user1",
-      "mood": ":smiley:",
-      "id": 1
+      "label": ":smiley:",
+      "value": 3,
+      "_id": 1
+    },
+    {
+      "day": "2017-06-08T00:00:00.000Z",
+      "userId": "user1",
+      "label": ":cry:",
+      "value": 3,
+      "_id": 2
     }
   ]
 }

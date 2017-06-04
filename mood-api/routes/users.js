@@ -7,27 +7,27 @@ router.use(cors())
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  User.find(function (err, moods) {
+  User.find(function (err, users) {
     if (err) return next(err)
-    res.json(moods)
+    res.json(users)
   })
 })
 
 /* GET /users/id */
 router.get('/id/:id', function (req, res, next) {
-  User.findById(req.params.id, function (err, post) {
+  User.findById(req.params.id, function (err, user) {
     if (err) return next(err)
-    res.json(post)
+    res.json(user)
   })
 })
 
-/* GET /users/id */
+/* GET /users/team */
 router.get('/team/:team', function (req, res, next) {
   var query  = User.where({ team: req.params.team });
-  query.find(function (err, kitten) {
+  query.find(function (err, users) {
     if (err) return next(err);
-    if (kitten) {
-      res.json(kitten);
+    if (users) {
+      res.json(users);
     }
   });
 })
@@ -35,25 +35,25 @@ router.get('/team/:team', function (req, res, next) {
 
 /* PUT /users/:id */
 router.put('/:id', function (req, res, next) {
-  User.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+  User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
     if (err) return next(err)
-    res.json(post)
+    res.json(user)
   })
 })
 
 /* POST /user */
 router.post('/', function (req, res, next) {
-  User.create(req.body, function (err, post) {
+  User.create(req.body, function (err, user) {
     if (err) return next(err)
-    res.json(post)
+    res.json(user)
   })
 })
 
 /* DELETE /users/:id */
 router.delete('/:id', function (req, res, next) {
-  User.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+  User.findByIdAndRemove(req.params.id, req.body, function (err, user) {
     if (err) return next(err)
-    res.json(post)
+    res.json(user)
   })
 })
 
