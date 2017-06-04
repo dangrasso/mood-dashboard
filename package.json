@@ -5,7 +5,7 @@
   "main": "client.js",
   "scripts": {
     "start": "npm run start:client",
-    "start:server": "json-server --watch server/db.json",
+    "start:server": "json-server --id _id --watch server/db.json",
     "start:client": "bankai client.js -p 8080 --open -c [ -u sheetify-nested ]",
     "build:prod": "bankai build client.js dist/",
     "lint": "standard --verbose | snazzy",

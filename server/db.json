@@ -1,16 +1,58 @@
 {
   "users": [
     {
-      "id": "user1",
+      "_id": "user1",
       "team": "aTeam"
     }
   ],
-  "logs": [
+  "moods": [
     {
-      "day": "2017-05-12T00:00:00.000Z",
+      "day": "2017-06-06T00:00:00.000Z",
       "userId": "user1",
-      "mood": ":smiley:",
-      "id": 1
+      "label": ":sunglasses:",
+      "_id": "By5ytWzGb"
+    },
+    {
+      "day": "2017-06-02T00:00:00.000Z",
+      "userId": "user1",
+      "label": ":unamused:",
+      "_id": "HyeSKWGGb"
+    },
+    {
+      "day": "2017-05-31T00:00:00.000Z",
+      "userId": "user1",
+      "label": ":dizzy_face:",
+      "_id": "HkJQq-zfZ"
+    },
+    {
+      "day": "2017-05-30T00:00:00.000Z",
+      "userId": "user1",
+      "label": ":scream:",
+      "_id": "H1BwsZffZ"
+    },
+    {
+      "day": "2017-05-29T00:00:00.000Z",
+      "userId": "user1",
+      "label": ":smiley:",
+      "_id": "Bk_wj-fGZ"
+    },
+    {
+      "day": "2017-06-01T00:00:00.000Z",
+      "userId": "user1",
+      "label": ":smirk:",
+      "_id": "SkoDsbMGZ"
+    },
+    {
+      "day": "2017-06-07T00:00:00.000Z",
+      "userId": "user1",
+      "label": ":smiley:",
+      "_id": "rkXOsWzMZ"
+    },
+    {
+      "day": "2017-06-08T00:00:00.000Z",
+      "userId": "user1",
+      "label": ":laughing:",
+      "_id": "Hyc_jZzGb"
     }
   ]
 }
