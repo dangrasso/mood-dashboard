@@ -60,15 +60,13 @@ module.exports = {
         .then((xhr, resp) => send('sync', {users: resp}, done))
         .catch(console.error);
     },
-    saveMood: function(state, data, send, done) {
-      const mood = data;
+    saveMood: function(state, mood, send, done) {
       (mood.hasOwnProperty('_id') ? qwest.put(`/moods/${mood._id}`, mood) : qwest.post(`/moods`, mood))
           .then((xhr, savedMood) => send('select', savedMood, done))
           .then(() => send('getMoods', null, done))
           .catch(console.error);
     },
-    deleteMood: function(state, data, send, done) {
-      const mood = data;
+    deleteMood: function(state, mood, send, done) {
       qwest['delete'](`/moods/${mood._id}`)
         .then(() => send('select', null, done))
         .then(() => send('getMoods', null, done))
