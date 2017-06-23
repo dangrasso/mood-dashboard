@@ -1,45 +1,45 @@
 var express = require('express')
 var cors = require('cors')
 var router = express.Router()
-var Log = require('../models/Log.js')
+var Mood = require('../models/Mood.js')
 
 router.use(cors())
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  Log.find(function (err, logs) {
+  Mood.find(function (err, moods) {
     if (err) return next(err)
-    res.json(logs)
+    res.json(moods)
   })
 })
 
-/* GET /logs/id */
+/* GET /moods/id */
 router.get('/:id', function (req, res, next) {
-  Log.findById(req.params.id, function (err, post) {
+  Mood.findById(req.params.id, function (err, post) {
     if (err) return next(err)
     res.json(post)
   })
 })
 
-/* PUT /logs/:id */
+/* PUT /moods/:id */
 router.put('/:id', function (req, res, next) {
-  Log.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+  Mood.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err)
     res.json(post)
   })
 })
 
-/* POST /logs */
+/* POST /moods */
 router.post('/', function (req, res, next) {
-  Log.create(req.body, function (err, post) {
+  Mood.create(req.body, function (err, post) {
     if (err) return next(err)
     res.json(post)
   })
 })
 
-/* DELETE /logs/:id */
+/* DELETE /moods/:id */
 router.delete('/:id', function (req, res, next) {
-  Log.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+  Mood.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err)
     res.json(post)
   })

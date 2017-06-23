@@ -11,7 +11,7 @@ module.exports = {
   state: {
     /* initial values of state inside the model */
     team: queryString.team,
-    logs: [],
+    moods: [],
     users: [],
     days: [ // two weeks, monday to friday
       today.clone().isoWeekday(1).toISOString(),
@@ -26,12 +26,12 @@ module.exports = {
       today.clone().isoWeekday(4 + 7).toISOString(),
       today.clone().isoWeekday(5 + 7).toISOString(),
     ],
-    selectedLog: null,
+    selectedMood: null,
   },
   reducers: {
     /* synchronous operations that modify state. Triggered by actions. Signature of (data, state). */
     sync: (state, data) => Object.assign(state, data),
-    select: (state, log) => ({ selectedLog: log }),
+    select: (state, mood) => ({ selectedMood: mood }),
     changeDaysRange: (state, data) => ({
       days: state.days.map(day => {
         let newDay = moment(day).add(data.amount, data.unit);
@@ -50,9 +50,9 @@ module.exports = {
   effects: {
     // asynchronous operations that don't modify state directly.
     // Triggered by actions, can call actions. Signature of (data, state, send, done)
-    getLogs: function (state, data, send, done) {
-      qwest.get('/logs')
-        .then((xhr, resp) => send('sync', {logs: resp}, done))
+    getMoods: function (state, data, send, done) {
+      qwest.get('/moods')
+        .then((xhr, resp) => send('sync', {moods: resp}, done))
         .catch(console.error);
     },
     getUsers: function (state, data, send, done) {
@@ -60,18 +60,16 @@ module.exports = {
         .then((xhr, resp) => send('sync', {users: resp}, done))
         .catch(console.error);
     },
-    saveLog: function(state, data, send, done) {
-      const log = data;
-      (log.hasOwnProperty('_id') ? qwest.put(`/logs/${log._id}`, log) : qwest.post(`/logs`, log))
-          .then((xhr, savedLog) => send('select', savedLog, done))
-          .then(() => send('getLogs', null, done))
+    saveMood: function(state, mood, send, done) {
+      (mood.hasOwnProperty('_id') ? qwest.put(`/moods/${mood._id}`, mood) : qwest.post(`/moods`, mood))
+          .then((xhr, savedMood) => send('select', savedMood, done))
+          .then(() => send('getMoods', null, done))
           .catch(console.error);
     },
-    deleteLog: function(state, data, send, done) {
-      const log = data;
-      qwest['delete'](`/logs/${log._id}`)
+    deleteMood: function(state, mood, send, done) {
+      qwest['delete'](`/moods/${mood._id}`)
         .then(() => send('select', null, done))
-        .then(() => send('getLogs', null, done))
+        .then(() => send('getMoods', null, done))
         .catch(console.error);
     }
   }

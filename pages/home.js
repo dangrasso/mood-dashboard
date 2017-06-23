@@ -113,7 +113,7 @@ module.exports = function (state, prev, send) {
         <div class="emoji-bar">
           ${_.map(EMOJI_SET_MOODS, makeEmojiButton)}
           <span>
-            ${isSelectedAny() && state.selectedLog.id ? html`
+            ${isSelectedAny() && state.selectedMood._id ? html`
               <span aria-label="delete" class="emoji-button" onclick=${() => deleteSelected()}>
                 ${makeEmoji(':negative_squared_cross_mark:')}
               </span>
@@ -123,7 +123,7 @@ module.exports = function (state, prev, send) {
         <div class="input-bar">
           <label for="custom-mood">Custom:</label>
           <input id="custom-mood" type="text" 
-            value=${isSelectedAny() ? state.selectedLog.mood : ''} 
+            value=${isSelectedAny() ? state.selectedMood.label : ''} 
             oninput=${_.debounce((e) => saveSelected(e.target.value), 1000)} />
           <span>(more <a href="http://emoji.codes/" target="_blank" rel="noopener">emoji</a>)</span>   
         </div>
@@ -152,41 +152,39 @@ module.exports = function (state, prev, send) {
 
         ${_.map(state.users, user => html`
           <tr>
-            <th class="user">${user.id}</th>
+            <th class="user">${user._id}</th>
             ${_.map(state.days, day => {
-              const log = getLog(user, day) || 
+              const mood = getMood(user, day) || 
                 {
                   day: day,
-                  userId: user.id, 
-                  mood: ''
+                  userId: user._id, 
+                  label: ''
                 };
               
               return html`<td 
                   class="mood ${isSelected(user, day) ? 'm--selected' : isSelectedAny() ? 'm--unselected' : '' }"
-                  onclick=${() => send('select', isSelected(user, day) ? null : log)}>
-                    ${makeEmoji(log.mood)}
+                  onclick=${() => send('select', isSelected(user, day) ? null : mood)}>
+                    ${makeEmoji(mood.label)}
                 </td>`;
             })}
           </tr>
         `)}
       </table>
 
-      
-
       <footer>Emoji art supplied by <a href="http://emojione.com/">EmojiOne</a></footer>
     </main>
   `;
 
-  function getLog(user, day) {
-    return _.find(state.logs, {day: day, userId: user.id});
+  function getMood(user, day) {
+    return _.find(state.moods, {day: day, userId: user._id});
   }
 
   function isSelected(user, day) {
-    return isSelectedAny() && state.selectedLog.userId === user.id && state.selectedLog.day === day;
+    return isSelectedAny() && state.selectedMood.userId === user._id && state.selectedMood.day === day;
   }
 
   function isSelectedAny() {
-    return !!state.selectedLog;
+    return !!state.selectedMood;
   }
 
   function makeEmojiButton(emojiShortName) {
@@ -202,25 +200,25 @@ module.exports = function (state, prev, send) {
     return emoji;
   }
 
-  function saveSelected(mood) {
+  function saveSelected(labelValue) {
     if (!isSelectedAny()) {
       return;
     }
-    const log = state.selectedLog;
-    log.mood = mood;
-    send('saveLog', log);
+    const mood = state.selectedMood;
+    mood.label = labelValue;
+    send('saveMood', mood);
   }
 
   function deleteSelected() {
     if (!isSelectedAny()) {
       return;
     }
-    const log = state.selectedLog;
-    send('deleteLog', log);
+    const mood = state.selectedMood;
+    send('deleteMood', mood);
   }
 
   function init() {
-    send('getLogs');
+    send('getMoods');
     send('getUsers');
   }
 };
